@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  application:
+    build:
+      context:    .
+      dockerfile: ./images/Dockerfile
+    restart: on-failure
+    working_dir: /app
+    container_name: mottor.local
+    command: bash /app/scripts/init_container.sh
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    volumes:
+      - .:/app
